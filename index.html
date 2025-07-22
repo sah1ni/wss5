@@ -1,67 +1,550 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<title>Deneme</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotDefteri.com - Notlarınızı Buraya Yazın!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 5px 0;
+            border-bottom: 3px solid #003399;
+        }
+
+        .header-content {
+            width: 800px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffff00;
+            text-shadow: 2px 2px 0px #000000;
+            margin: 10px 0;
+        }
+
+        .navbar {
+            background-color: #cccccc;
+            border: 2px inset #cccccc;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .navbar table {
+            width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .navbar td {
+            padding: 5px 10px;
+            border-right: 1px solid #999999;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .navbar a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+
+        .main-container {
+            width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .welcome-text {
+            background-color: #ffffcc;
+            border: 2px solid #ff9900;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .welcome-text h1 {
+            color: #ff0000;
+            font-size: 18px;
+            margin: 5px 0;
+            text-decoration: underline;
+        }
+
+        .note-section {
+            background-color: #f0f0f0;
+            border: 2px inset #cccccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .note-section h2 {
+            color: #0066cc;
+            font-size: 14px;
+            margin: 0 0 10px 0;
+            text-decoration: underline;
+        }
+
+        .note-form table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .note-form td {
+            padding: 5px;
+            vertical-align: middle;
+        }
+
+        .note-input {
+            width: 500px;
+            padding: 3px;
+            border: 2px inset #cccccc;
+            font-size: 12px;
+        }
+
+        .note-button {
+            background-color: #cccccc;
+            border: 2px outset #cccccc;
+            padding: 3px 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .note-button:hover {
+            background-color: #aaaaaa;
+        }
+
+        .clear-button {
+            background-color: #ff6666;
+            border: 2px outset #ff6666;
+            padding: 3px 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .clear-button:hover {
+            background-color: #ff4444;
+        }
+
+        .notes-list-section {
+            margin-bottom: 20px;
+        }
+
+        .notes-title {
+            background-color: #003399;
+            color: white;
+            padding: 5px 10px;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid #000000;
+        }
+
+        .notes-content {
+            border: 2px inset #cccccc;
+            background-color: #f8f8f8;
+            padding: 10px;
+            min-height: 200px;
+        }
+
+        .notes-table {
+            width: 100%;
+            border: 2px solid #000000;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        .notes-table th {
+            background-color: #cccccc;
+            border: 1px solid #000000;
+            padding: 5px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .notes-table td {
+            border: 1px solid #cccccc;
+            padding: 5px;
+            font-size: 11px;
+            vertical-align: top;
+        }
+
+        .notes-table tr:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        .note-item {
+            border: 1px solid #999999;
+            background-color: #ffffff;
+            padding: 8px;
+            margin-bottom: 5px;
+        }
+
+        .note-number {
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .note-text {
+            color: #000000;
+            font-size: 12px;
+            margin: 3px 0;
+        }
+
+        .note-time {
+            color: #666666;
+            font-size: 9px;
+            font-style: italic;
+        }
+
+        .delete-link {
+            color: #ff0000;
+            text-decoration: none;
+            font-size: 9px;
+            font-weight: bold;
+            float: right;
+        }
+
+        .delete-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: #666666;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            border-top: 3px solid #000000;
+            font-size: 11px;
+        }
+
+        .counter {
+            background-color: #ff0000;
+            color: white;
+            padding: 3px 8px;
+            margin: 5px;
+            border: 1px solid #000000;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .blink {
+            animation: blink 1s linear infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .new-gif {
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 10px;
+            background-color: #ffff00;
+            padding: 1px 3px;
+            border: 1px solid #000000;
+        }
+
+        marquee {
+            background-color: #ffff00;
+            border: 2px solid #ff0000;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        .stats-box {
+            background-color: #e6f3ff;
+            border: 2px solid #0066cc;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #666666;
+            font-style: italic;
+            padding: 30px;
+        }
+    </style>
 </head>
 <body>
-<pre>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">*** NotDefteri.com ***</div>
+            <div style="font-size: 11px;">Türkiye'nin En Hızlı Not Alma Sitesi!</div>
+            <div class="counter">Toplam Not Sayısı: <span id="note-counter">0</span></div>
+        </div>
+    </div>
 
+    <div class="navbar">
+        <table>
+            <tr>
+                <td><a href="#" onclick="scrollToTop()">ANA SAYFA</a></td>
+                <td><a href="#" onclick="clearAllNotes()">NOTLARI TEMİZLE</a></td>
+                <td><a href="#" onclick="exportNotes()">NOTLARI KAYDET</a></td>
+                <td><a href="#" onclick="showStats()">İSTATİSTİKLER</a></td>
+                <td><a href="#">HAKKIMIZDA</a></td>
+                <td><a href="#">YARDIM</a></td>
+            </tr>
+        </table>
+    </div>
 
+    <div class="main-container">
+        <marquee behavior="scroll" direction="left" class="blink">
+            *** YENİ NOTLARINIZI HIZLICA EKLEYİN! SINIRSIZ NOT ALMA İMKANI! ***
+        </marquee>
 
-                                                                                                                
-                                                                                                                
-   SSSSSSSSSSSSSSS              AAA               HHHHHHHHH     HHHHHHHHHIIIIIIIIIINNNNNNNN        NNNNNNNN     
- SS:::::::::::::::S            A:::A              H:::::::H     H:::::::HI::::::::IN:::::::N       N::::::N     
-S:::::SSSSSS::::::S           A:::::A             H:::::::H     H:::::::HI::::::::IN::::::::N      N::::::N     
-S:::::S     SSSSSSS          A:::::::A            HH::::::H     H::::::HHII::::::IIN:::::::::N     N::::::N     
-S:::::S                     A:::::::::A             H:::::H     H:::::H    I::::I  N::::::::::N    N::::::N     
-S:::::S                    A:::::A:::::A            H:::::H     H:::::H    I::::I  N:::::::::::N   N::::::N     
- S::::SSSS                A:::::A A:::::A           H::::::HHHHH::::::H    I::::I  N:::::::N::::N  N::::::N     
-  SS::::::SSSSS          A:::::A   A:::::A          H:::::::::::::::::H    I::::I  N::::::N N::::N N::::::N     
-    SSS::::::::SS       A:::::A     A:::::A         H:::::::::::::::::H    I::::I  N::::::N  N::::N:::::::N     
-       SSSSSS::::S     A:::::AAAAAAAAA:::::A        H::::::HHHHH::::::H    I::::I  N::::::N   N:::::::::::N     
-            S:::::S   A:::::::::::::::::::::A       H:::::H     H:::::H    I::::I  N::::::N    N::::::::::N     
-            S:::::S  A:::::AAAAAAAAAAAAA:::::A      H:::::H     H:::::H    I::::I  N::::::N     N:::::::::N     
-SSSSSSS     S:::::S A:::::A             A:::::A   HH::::::H     H::::::HHII::::::IIN::::::N      N::::::::N     
-S::::::SSSSSS:::::SA:::::A               A:::::A  H:::::::H     H:::::::HI::::::::IN::::::N       N:::::::N     
-S:::::::::::::::SSA:::::A                 A:::::A H:::::::H     H:::::::HI::::::::IN::::::N        N::::::N     
- SSSSSSSSSSSSSSS AAAAAAA                   AAAAAAAHHHHHHHHH     HHHHHHHHHIIIIIIIIIINNNNNNNN         NNNNNNN     
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-BBBBBBBBBBBBBBBBB   EEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR                  AAA         TTTTTTTTTTTTTTTTTTTTTTT
-B::::::::::::::::B  E::::::::::::::::::::ER::::::::::::::::R                A:::A        T:::::::::::::::::::::T
-B::::::BBBBBB:::::B E::::::::::::::::::::ER::::::RRRRRR:::::R              A:::::A       T:::::::::::::::::::::T
-BB:::::B     B:::::BEE::::::EEEEEEEEE::::ERR:::::R     R:::::R            A:::::::A      T:::::TT:::::::TT:::::T
-  B::::B     B:::::B  E:::::E       EEEEEE  R::::R     R:::::R           A:::::::::A     TTTTTT  T:::::T  TTTTTT
-  B::::B     B:::::B  E:::::E               R::::R     R:::::R          A:::::A:::::A            T:::::T        
-  B::::BBBBBB:::::B   E::::::EEEEEEEEEE     R::::RRRRRR:::::R          A:::::A A:::::A           T:::::T        
-  B:::::::::::::BB    E:::::::::::::::E     R:::::::::::::RR          A:::::A   A:::::A          T:::::T        
-  B::::BBBBBB:::::B   E:::::::::::::::E     R::::RRRRRR:::::R        A:::::A     A:::::A         T:::::T        
-  B::::B     B:::::B  E::::::EEEEEEEEEE     R::::R     R:::::R      A:::::AAAAAAAAA:::::A        T:::::T        
-  B::::B     B:::::B  E:::::E               R::::R     R:::::R     A:::::::::::::::::::::A       T:::::T        
-  B::::B     B:::::B  E:::::E       EEEEEE  R::::R     R:::::R    A:::::AAAAAAAAAAAAA:::::A      T:::::T        
-BB:::::BBBBBB::::::BEE::::::EEEEEEEE:::::ERR:::::R     R:::::R   A:::::A             A:::::A   TT:::::::TT      
-B:::::::::::::::::B E::::::::::::::::::::ER::::::R     R:::::R  A:::::A               A:::::A  T:::::::::T      
-B::::::::::::::::B  E::::::::::::::::::::ER::::::R     R:::::R A:::::A                 A:::::A T:::::::::T      
-BBBBBBBBBBBBBBBBB   EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRAAAAAAA                   AAAAAAATTTTTTTTTTT      
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
+        <div class="welcome-text">
+            <h1>NotDefteri.com'a Hoş Geldiniz!</h1>
+            <p><strong>Hızlı ve pratik not alma çözümü!</strong></p>
+            <p>Notlarınızı yazın, otomatik olarak kaydedilsin. <span class="blink" style="color: red;">ÜCRETSIZ</span> hizmet!</p>
+        </div>
 
-        
-        
-</pre>
+        <div class="note-section">
+            <h2>NOT EKLEME <span class="new-gif">HOT!</span></h2>
+            <div class="note-form">
+                <table>
+                    <tr>
+                        <td width="80">Notunuz:</td>
+                        <td><input type="text" class="note-input" id="noteInput" placeholder="Notunuzu buraya yazın..."></td>
+                        <td>
+                            <button class="note-button" onclick="addNote()">EKLE!</button>
+                            <button class="clear-button" onclick="clearInput()">TEMİZLE</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="stats-box" id="statsBox" style="display: none;">
+            <strong>İSTATİSTİKLER</strong><br>
+            Toplam Not: <span id="totalNotes">0</span> | 
+            Bu Oturum: <span id="sessionNotes">0</span> | 
+            Ortalama Uzunluk: <span id="avgLength">0</span> karakter
+        </div>
+
+        <div class="notes-list-section">
+            <div class="notes-title">NOTLARINIZ LİSTESİ <span class="new-gif">LIVE!</span></div>
+            <div class="notes-content" id="notesContent">
+                <div class="empty-message">
+                    Henüz hiç not eklemediniz. Yukarıdaki kutuya yazarak ilk notunuzu ekleyin!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>Copyright © 2025 NotDefteri.com</strong><br>
+        Tüm hakları saklıdır. Bu site HTML 4.0 ile kodlanmıştır.<br>
+        <span style="font-size: 9px;">Son güncelleme: 22.07.2025 - JavaScript destekli dinamik not sistemi</span><br>
+        <img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" 
+             alt="Best viewed with Netscape Navigator" style="margin: 5px;">
+        En iyi görüntüleme için Netscape Navigator kullanın!
+    </div>
+
+    <script>
+        let notes = [];
+        let sessionNoteCount = 0;
+
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleString('tr-TR');
+        }
+
+        function addNote() {
+            const noteInput = document.getElementById('noteInput');
+            const noteText = noteInput.value.trim();
+            
+            if (noteText === '') {
+                alert('Lütfen bir not yazın!');
+                return;
+            }
+
+            const note = {
+                id: Date.now(),
+                text: noteText,
+                time: getCurrentTime()
+            };
+
+            notes.unshift(note);
+            sessionNoteCount++;
+            noteInput.value = '';
+            
+            renderNotes();
+            updateCounter();
+            
+            // Başarı mesajı
+            if (Math.random() > 0.8) {
+                alert('Notunuz başarıyla eklendi! ✓');
+            }
+        }
+
+        function deleteNote(id) {
+            if (confirm('Bu notu silmek istediğinizden emin misiniz?')) {
+                notes = notes.filter(note => note.id !== id);
+                renderNotes();
+                updateCounter();
+            }
+        }
+
+        function renderNotes() {
+            const notesContent = document.getElementById('notesContent');
+            
+            if (notes.length === 0) {
+                notesContent.innerHTML = `
+                    <div class="empty-message">
+                        Henüz hiç not eklemediniz. Yukarıdaki kutuya yazarak ilk notunuzu ekleyin!
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            notes.forEach((note, index) => {
+                html += `
+                    <div class="note-item">
+                        <span class="note-number">#${notes.length - index}</span>
+                        <a href="#" class="delete-link" onclick="deleteNote(${note.id})">[SİL]</a>
+                        <div class="note-text">${note.text}</div>
+                        <div class="note-time">Eklenme zamanı: ${note.time}</div>
+                    </div>
+                `;
+            });
+
+            notesContent.innerHTML = html;
+        }
+
+        function updateCounter() {
+            document.getElementById('note-counter').textContent = notes.length;
+            
+            if (document.getElementById('statsBox').style.display !== 'none') {
+                updateStats();
+            }
+        }
+
+        function clearInput() {
+            document.getElementById('noteInput').value = '';
+        }
+
+        function clearAllNotes() {
+            if (notes.length === 0) {
+                alert('Silinecek not bulunmuyor!');
+                return;
+            }
+            
+            if (confirm(`${notes.length} adet notu silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!`)) {
+                notes = [];
+                renderNotes();
+                updateCounter();
+                alert('Tüm notlar silindi!');
+            }
+        }
+
+        function showStats() {
+            const statsBox = document.getElementById('statsBox');
+            if (statsBox.style.display === 'none' || statsBox.style.display === '') {
+                statsBox.style.display = 'block';
+                updateStats();
+            } else {
+                statsBox.style.display = 'none';
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('totalNotes').textContent = notes.length;
+            document.getElementById('sessionNotes').textContent = sessionNoteCount;
+            
+            if (notes.length > 0) {
+                const avgLength = notes.reduce((sum, note) => sum + note.text.length, 0) / notes.length;
+                document.getElementById('avgLength').textContent = Math.round(avgLength);
+            } else {
+                document.getElementById('avgLength').textContent = '0';
+            }
+        }
+
+        function exportNotes() {
+            if (notes.length === 0) {
+                alert('Kaydedilecek not bulunmuyor!');
+                return;
+            }
+            
+            let exportText = '=== NotDefteri.com - Notlarım ===\\n\\n';
+            notes.forEach((note, index) => {
+                exportText += `${index + 1}. ${note.text}\\n   (${note.time})\\n\\n`;
+            });
+            
+            // Basit export (normalde dosya indirme olurdu)
+            const popup = window.open('', '_blank', 'width=600,height=400');
+            popup.document.write(`<pre>${exportText}</pre>`);
+            popup.document.title = 'Notlarım - NotDefteri.com';
+        }
+
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+        }
+
+        // Enter tuşu ile not ekleme
+        document.getElementById('noteInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addNote();
+            }
+        });
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
+            renderNotes();
+            updateCounter();
+            
+            // Focus input
+            document.getElementById('noteInput').focus();
+        });
+
+        // Rastgele motivasyon popup'ı
+        setTimeout(function() {
+            if (notes.length === 0 && Math.random() > 0.6) {
+                alert('İlk notunuzu eklemeyi unutmayın! Hemen başlayın! 📝');
+            }
+        }, 15000);
+
+        // Her 5 notda bir tebrik mesajı
+        let lastCongratulation = 0;
+        function checkCongratulation() {
+            if (notes.length > 0 && notes.length % 5 === 0 && notes.length !== lastCongratulation) {
+                lastCongratulation = notes.length;
+                alert(`Tebrikler! ${notes.length} not eklediğiniz! Böyle devam edin! 🎉`);
+            }
+        }
+
+        // Not eklendiğinde tebrik kontrolü
+        const originalAddNote = addNote;
+        addNote = function() {
+            originalAddNote();
+            setTimeout(checkCongratulation, 100);
+        };
+    </script>
 </body>
 </html>
